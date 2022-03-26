@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Data : MonoBehaviour {
+public class KeyboardSupportServiceScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
