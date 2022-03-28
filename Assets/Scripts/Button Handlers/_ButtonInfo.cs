@@ -10,12 +10,19 @@ public abstract class ButtonInfo {
 	/// <summary>
 	/// The key(s) that this button responds to.
 	/// </summary>
-	public List<KeyCode> keys;
+	public KeyCode[] keys;
 	/// <summary>
 	/// Obtains the button to be tapped into.
 	/// </summary>
 	/// <param name="root">The root transform which will be at the top of the search.</param>
 	public abstract Transform GetTransform(Transform root);
+
+	public ButtonInfo(KeyCode[] keys)
+    {
+		this.keys = keys;
+    }
+
+
 
 	/// <summary>
 	/// Returns the child of <paramref name="root"/> with name <paramref name="name"/>, or throws a NullReferenceException if no such child can be found.

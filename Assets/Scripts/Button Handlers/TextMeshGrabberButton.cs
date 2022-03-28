@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -16,7 +17,7 @@ public class TextMeshGrabberButton : ButtonInfo {
     /// Creates a new TextMeshGrabberButton with the given path (starting from the children of the parent selectable).
     /// </summary>
     /// <exception cref="ArgumentException">The path length is equal to zero.</exception>
-    public TextMeshGrabberButton(string targetLabel, params string[] path)
+    public TextMeshGrabberButton(KeyCode[] keys, string targetLabel, params string[] path) : base(keys)
     {
         if (path.Length == 0)
             throw new ArgumentException("Path length cannot be zero.");

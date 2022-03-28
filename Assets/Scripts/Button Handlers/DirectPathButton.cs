@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -15,7 +16,7 @@ public class DirectPathButton : ButtonInfo {
     /// Creates a new DirectPathButton with the given path (starting from the children of the parent selectable).
     /// </summary>
     /// <exception cref="ArgumentException">The path length is equal to zero.</exception>
-    public DirectPathButton(params string[] path)
+    public DirectPathButton(KeyCode[] keys, params string[] path) : base(keys)
     {
         if (path.Length == 0)
             throw new ArgumentException("Path length cannot be zero.");
