@@ -11,7 +11,7 @@ public class ChildSelectable : MonoBehaviour {
 	/// <summary>
 	/// The key(s) that this button responds to.
 	/// </summary>
-	public List<KeyCode> keys { get; set; }
+	public KeyCode[] keys { get; set; }
 	/// <summary>
 	/// The parent selectable, used for detecting when to fire.
 	/// </summary>
@@ -31,10 +31,10 @@ public class ChildSelectable : MonoBehaviour {
 		if (parent.isSelected)
         {
 			//If the key is just depressed, press this button.
-			if (keys.Any(key => Input.GetKeyDown(key)))
+			if (keys.Any(key => Input.GetKeyDown(key)) && _selectable.OnInteract != null)
 				_selectable.OnInteract();
 			//If the key is just released, release this button.
-			if (keys.Any(key => Input.GetKeyUp(key)))
+			if (keys.Any(key => Input.GetKeyUp(key)) && _selectable.OnInteractEnded != null)
 				_selectable.OnInteractEnded();
         }
 	}

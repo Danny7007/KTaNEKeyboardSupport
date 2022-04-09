@@ -21,27 +21,28 @@ public abstract class ButtonInfo {
     {
 		this.keys = keys;
     }
+	public ButtonInfo(KeyCode key) : this(new[] { key }) { }
 
 
 
 	/// <summary>
 	/// Returns the child of <paramref name="root"/> with name <paramref name="name"/>, or throws a NullReferenceException if no such child can be found.
 	/// </summary>
-	protected Transform GetChild(Transform root, string name)
+	protected Transform GetChild(Transform root, string name, bool nullPossible = false)
     {
-		if (root.Find(name) == null)
+		if (root.Find(name) == null && !nullPossible)
 			throw new NullReferenceException(string.Format("Could not find a child named {0} from root {1}.", name, root.name));
 		return root.Find(name);
 	}
-	protected Transform GetChildRecursive(Transform root, string name)
+	protected Transform GetChildRecursive(Transform root, string name, bool nullPossible = false)
     {
-		return GetChildRecursive(new[] { root }, name, x => true, root.name);
+		return GetChildRecursive(new[] { root }, name, x => true, root.name, nullPossible);
     }
-	protected Transform GetChildRecursive(Transform root, string name, Predicate<Transform> validator)
+	protected Transform GetChildRecursive(Transform root, string name, Predicate<Transform> validator, bool nullPossible = false)
     {
-		return GetChildRecursive(new[] { root }, name, validator, root.name);
+		return GetChildRecursive(new[] { root }, name, validator, root.name, nullPossible);
     }
-	private Transform GetChildRecursive(Transform[] roots, string name, Predicate<Transform> validator, string startingRootName)
+	private Transform GetChildRecursive(Transform[] roots, string name, Predicate<Transform> validator, string startingRootName, bool nullPossible)
     {
 		List<Transform> tfs = new List<Transform>();
 		foreach (Transform root in roots)
@@ -51,8 +52,8 @@ public abstract class ButtonInfo {
 			foreach (Transform child in root)
 				tfs.Add(child);
         }
-		if (tfs.Count == 0)
+		if (tfs.Count == 0 && !nullPossible)
 			throw new NullReferenceException(string.Format("Could not find a child named {0} from root {1}.", name, startingRootName));
-		return GetChildRecursive(tfs.ToArray(), name, validator, startingRootName);
+		return GetChildRecursive(tfs.ToArray(), name, validator, startingRootName, nullPossible);
     }
 }

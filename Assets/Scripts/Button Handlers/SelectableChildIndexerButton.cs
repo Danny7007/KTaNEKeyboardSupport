@@ -12,6 +12,7 @@ public class SelectableChildIndexerButton : ButtonInfo
         _index = index;
         _eliminateNull = eliminateNull;
     }
+    public SelectableChildIndexerButton(KeyCode key, int index, bool eliminateNull = false) : this(new[] { key }, index, eliminateNull) { }
 
     public override Transform GetTransform(Transform root)
     {

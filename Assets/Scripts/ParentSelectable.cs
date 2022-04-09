@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,8 +33,18 @@ public class ParentSelectable : MonoBehaviour {
             isSelected = true;
     }
 
-    public void AssignSelectables(ButtonInfo[] infos)
+    public void AssignSelectables(ModuleInfo info)
     {
-
+        ButtonInfo[] buttons = info.buttons;
+        foreach (ButtonInfo button in buttons)
+        {
+            KMSelectable btnTf = button.GetTransform(this.transform).GetComponent<KMSelectable>();
+            if (btnTf != null)
+            {
+                ChildSelectable child = btnTf.gameObject.AddComponent<ChildSelectable>();
+                child.keys = button.keys;
+                child.parent = this;
+            }
+        }
     }
 }

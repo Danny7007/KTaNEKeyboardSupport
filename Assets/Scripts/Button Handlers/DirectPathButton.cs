@@ -22,6 +22,8 @@ public class DirectPathButton : ButtonInfo {
             throw new ArgumentException("Path length cannot be zero.");
         _path = path;
     }
+    public DirectPathButton(KeyCode key, params string[] path) : this(new KeyCode[] { key }, path) { }
+
     public override Transform GetTransform(Transform root)
     {
         Transform target = root;
