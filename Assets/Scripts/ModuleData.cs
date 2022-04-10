@@ -39,8 +39,21 @@ public static class ModuleData
             new SelectableChildIndexerButton(KeyCode.Alpha5, 4)
             ),
         
-        //new ModuleInfo("TwoBits",
-        //    new TextMeshGrabberButton(KeyCode.B, "B")
+        new ModuleInfo("TwoBits",
+            new TextMeshGrabberButton(KeyCode.B, "B"),
+            new TextMeshGrabberButton(KeyCode.C, "C"),
+            new TextMeshGrabberButton(KeyCode.D, "D"),
+            new TextMeshGrabberButton(KeyCode.E, "E"),
+            new TextMeshGrabberButton(KeyCode.G, "G"),
+            new TextMeshGrabberButton(KeyCode.K, "K"),
+            new TextMeshGrabberButton(KeyCode.P, "P"),
+            new TextMeshGrabberButton(KeyCode.V, "V"),
+            new TextMeshGrabberButton(KeyCode.Z, "Z"),
+            new TextMeshGrabberButton(KeyCode.KeypadEnter, "SUBMIT"),
+            new TextMeshGrabberButton(new[] { KeyCode.Space, KeyCode.LeftShift, KeyCode.RightShift }, "QUERY")
+            ),
+
+
 
     }.ToDictionary(inf => inf.moduleId);
 
