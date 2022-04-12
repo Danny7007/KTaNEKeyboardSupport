@@ -11,7 +11,7 @@ public class ChildSelectable : MonoBehaviour {
 	/// <summary>
 	/// The key(s) that this button responds to.
 	/// </summary>
-	public KeyCode[] keys { get; set; }
+	public KeySet keys { get; set; }
 	/// <summary>
 	/// The parent selectable, used for detecting when to fire.
 	/// </summary>

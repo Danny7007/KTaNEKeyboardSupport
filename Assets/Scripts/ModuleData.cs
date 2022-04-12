@@ -13,22 +13,23 @@ public static class ModuleData
             new SelectableChildIndexerButton(KeyCode.Alpha3, 2)),
 
         new ModuleInfo("Emoji Math",
-            new ByNameButton(new[] { KeyCode.Alpha0, KeyCode.Keypad0 }, "Button0"),
-            new ByNameButton(new[] { KeyCode.Alpha1, KeyCode.Keypad1 }, "Button1"),
-            new ByNameButton(new[] { KeyCode.Alpha2, KeyCode.Keypad2 }, "Button2"),
-            new ByNameButton(new[] { KeyCode.Alpha3, KeyCode.Keypad3 }, "Button3"),
-            new ByNameButton(new[] { KeyCode.Alpha4, KeyCode.Keypad4 }, "Button4"),
-            new ByNameButton(new[] { KeyCode.Alpha5, KeyCode.Keypad5 }, "Button5"),
-            new ByNameButton(new[] { KeyCode.Alpha6, KeyCode.Keypad6 }, "Button6"),
-            new ByNameButton(new[] { KeyCode.Alpha7, KeyCode.Keypad7 }, "Button7"),
-            new ByNameButton(new[] { KeyCode.Alpha8, KeyCode.Keypad8 }, "Button8"),
-            new ByNameButton(new[] { KeyCode.Alpha9, KeyCode.Keypad9 }, "Button9"),
-            new ByNameButton(new[] { KeyCode.Minus, KeyCode.KeypadMinus }, "MinusButton"),
-            new ByNameButton(new[] { KeyCode.Return, KeyCode.KeypadEnter, KeyCode.Equals, KeyCode.KeypadEquals }, "EnterButton")
+            new ByNameButton(KeySet.zero, "Button0"),
+            new ByNameButton(KeySet.one, "Button1"),
+            new ByNameButton(KeySet.two, "Button2"),
+            new ByNameButton(KeySet.three, "Button3"),
+            new ByNameButton(KeySet.four, "Button4"),
+            new ByNameButton(KeySet.five, "Button5"),
+            new ByNameButton(KeySet.six, "Button6"),
+            new ByNameButton(KeySet.seven, "Button7"),
+            new ByNameButton(KeySet.eight, "Button8"),
+            new ByNameButton(KeySet.nine, "Button9"),
+            new ByNameButton(new KeySet(KeyCode.Minus, KeyCode.KeypadMinus), "MinusButton"),
+            new ByNameButton(KeySet.enter + KeyCode.Equals + KeyCode.KeypadEquals, "EnterButton")
             ),
 
         new ModuleInfo("alphabet",
-            GetAlphabet(true)),
+            GetAlphabet(true)
+        ),
 
         //Switches
         new ModuleInfo("switchModule",
@@ -47,17 +48,18 @@ public static class ModuleData
             new TextMeshGrabberButton(KeyCode.G, "G"),
             new TextMeshGrabberButton(KeyCode.K, "K"),
             new TextMeshGrabberButton(KeyCode.P, "P"),
+            new TextMeshGrabberButton(KeyCode.T, "T"),
             new TextMeshGrabberButton(KeyCode.V, "V"),
             new TextMeshGrabberButton(KeyCode.Z, "Z"),
-            new TextMeshGrabberButton(KeyCode.KeypadEnter, "SUBMIT"),
-            new TextMeshGrabberButton(new[] { KeyCode.Space, KeyCode.LeftShift, KeyCode.RightShift }, "QUERY")
+            new TextMeshGrabberButton(KeySet.enter + KeyCode.S, "SUBMIT"),
+            new TextMeshGrabberButton(KeySet.shift + KeyCode.Space + KeyCode.Q, "QUERY")
             ),
 
 
 
     }.ToDictionary(inf => inf.moduleId);
 
-    private static TextMeshGrabberButton[] GetAlphabet(bool nullPossible = false, params string[] path)
+    private static TextMeshGrabberButton[] GetAlphabet(bool nullPossible, params string[] path)
     {
         return Enumerable.Range(0, 26).Select(ix => new TextMeshGrabberButton(KeyCode.A + ix, (KeyCode.A + ix).ToString(), nullPossible, path)).ToArray();
     }

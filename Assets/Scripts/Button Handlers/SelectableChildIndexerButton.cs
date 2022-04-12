@@ -7,12 +7,12 @@ public class SelectableChildIndexerButton : ButtonInfo
     private readonly int _index;
     private readonly bool _eliminateNull;
 
-    public SelectableChildIndexerButton(KeyCode[] keys, int index, bool eliminateNull=false) : base(keys)
+    public SelectableChildIndexerButton(KeySet keys, int index, bool eliminateNull=false) : base(keys)
     {
         _index = index;
         _eliminateNull = eliminateNull;
     }
-    public SelectableChildIndexerButton(KeyCode key, int index, bool eliminateNull = false) : this(new[] { key }, index, eliminateNull) { }
+    public SelectableChildIndexerButton(KeyCode key, int index, bool eliminateNull = false) : this(new KeySet(key), index, eliminateNull) { }
 
     public override Transform GetTransform(Transform root)
     {

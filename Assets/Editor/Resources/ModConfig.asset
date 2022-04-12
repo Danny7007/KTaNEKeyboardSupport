@@ -22,7 +22,13 @@ MonoBehaviour:
 
     Currently supported mods:
 
-    - Emoji Math'
-  version: 0.0.1
+    - Emoji Math
+
+    - Alphabet
+
+    - Switches
+
+    - Two Bits'
+  version: 0.2.0
   outputFolder: build
   previewImage: {fileID: 0}

@@ -16,19 +16,19 @@ public class DirectPathButton : ButtonInfo {
     /// Creates a new DirectPathButton with the given path (starting from the children of the parent selectable).
     /// </summary>
     /// <exception cref="ArgumentException">The path length is equal to zero.</exception>
-    public DirectPathButton(KeyCode[] keys, params string[] path) : base(keys)
+    public DirectPathButton(KeySet keys, params string[] path) : base(keys)
     {
         if (path.Length == 0)
             throw new ArgumentException("Path length cannot be zero.");
         _path = path;
     }
-    public DirectPathButton(KeyCode key, params string[] path) : this(new KeyCode[] { key }, path) { }
+    public DirectPathButton(KeyCode key, params string[] path) : this(new KeySet(key), path) { }
 
     public override Transform GetTransform(Transform root)
     {
         Transform target = root;
         foreach (string pathItem in _path)
-            target = GetChild(target, pathItem);
+            target = GetChild(target, pathItem, false);
         return target;
     }
 }

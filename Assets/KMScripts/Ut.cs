@@ -157,34 +157,7 @@ public static class Ut
         return output;
     }
 
-    /// <summary>
-    /// Sets a given component of <paramref name="vect"/> to <paramref name="value"/>. <paramref name="component"/> must be equal to X, Y, Z, x, y or z.
-    /// </summary>
-    /// <param name="vect">The vector to be modified.</param>
-    /// <param name="component">The component of the vector to be modified. Must be X, Y, Z, x, y or z.</param>
-    /// <param name="value">The value to set the component to.</param>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public static void SetComponent(this Vector3 vect, char component, float value)
-    {
-        if (vect == null)
-            throw new ArgumentNullException("vect");
-        switch (component)
-        {
-            case 'X':
-            case 'x':
-                vect.Set(value, vect.y, vect.z);
-                break;
-            case 'Y':
-            case 'y':
-                vect.Set(vect.x, value, vect.z);
-                break;
-            case 'Z':
-            case 'z':
-                vect.Set(vect.x, vect.y, value);
-                break;
-            default: throw new ArgumentOutOfRangeException("component", string.Format("Given component name ({0}) does match any of the components of the vector (x/y/z).", component));
-        }
-    }
+    
     /// <summary>
     ///     Linearly interpolates from <paramref name="start"/> to <paramref name="end"/> while <paramref name="t"/> is less than 0.5, and then interpolates backwards from <paramref name="end"/> to <paramref name="start"/> while <paramref name="t"/> is greater than 0.5.
     /// </summary>

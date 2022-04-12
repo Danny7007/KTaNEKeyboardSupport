@@ -5,13 +5,13 @@ using UnityEngine;
 public class ByNameButton : ButtonInfo
 {
     private string _name;
-    public ByNameButton(KeyCode[] keys, string name) : base(keys)
+    public ByNameButton(KeySet keys, string name) : base(keys)
     {
         _name = name;
     }
-    public ByNameButton(KeyCode key, string name) : this(new[] { key }, name) { }
+    public ByNameButton(KeyCode key, string name) : this(new KeySet(key), name) { }
     public override Transform GetTransform(Transform root)
     {
-        return GetChildRecursive(root, _name, tf => tf.GetComponent<KMSelectable>() != null);
+        return GetChildRecursive(root, tf => tf.name == _name && tf.GetComponent<KMSelectable>() != null, false);
     }
 }
